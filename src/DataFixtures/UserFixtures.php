@@ -35,7 +35,7 @@ class UserFixtures extends Fixture
             $user->setEmail($faker->email);
             $user->setLastName($faker->lastName);
             $user->setFirstName($faker->firstName);
-            $user->setAvatar($faker-> userName);
+            $user->setAvatar($faker->userName);
             $user->setPassword(
                 $this->passwordEncoder->hashPassword($user, 'secret')
             ); // je met l'user et son mdp
