@@ -7,13 +7,26 @@
         <h1>Accueil</h1>
       </div>
 
-      {% for category in categories %}
-        {{ category.name }}
-      {% endfor %}
+      <ul>
+        {% for category in categories %}
+          <a href="{{ path('app_category_name', { name: category.name }) }}">{{ category.name }}</a>
+        {% endfor %}
+      </ul>
+
       {% for dwelling in dwellings %}
-        {{ dwelling.name }}
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h3 class="card-title">{{ dwelling.name }}</h3>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Voir plus</a>
+            <div class="card-footer">
+              <span class="badge bg-warning">{{ dwelling.city }}</span>
+              <span class="badge bg-success">{{ dwelling.price }}</span>
+            </div>
+          </div>
+        </div>
       {% endfor %}
-      <div class="col-12">{{ dump() }}</div>
     </section>
   </main>
 {% endblock %}
