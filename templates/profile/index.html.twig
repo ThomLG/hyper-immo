@@ -1,10 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfileController!{% endblock %}
+{% block title %}
+  Mon compte
+{% endblock %}
 
 {% block body %}
+  <main class="container">
+    <h1>Profil de {{ app.user.lastName }} {{ app.user.firstName }}</h1>
 
-    <h1>Bonjour {{ user.lastName }} {{user.firstName}} </h1>
-
-
+    <div>NOM : {{ app.user.lastName|upper }}</div>
+    <div>Prénom : {{ app.user.firstName }}</div>
+    <div>E-mail : {{ app.user.email }}</div>
+    <div>Avatar : {{ app.user.avatar }}</div>
+    <div>
+      <a class="btn btn-primary" href="{{ path('app_profile_edit', { lastName: app.user.lastName }) }}">Modifier le profil</a>
+      <a class="btn btn-primary" href="#">Modifier le mot de passe</a>
+    </div>
+  </main>
 {% endblock %}
