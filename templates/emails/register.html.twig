@@ -1,10 +1,13 @@
-{% block title %}Activation {% endblock %}
+{% block title %}
+  Activation
+{% endblock %}
 
 {% block body %}
-<h1>Activez votre compte</h1>
+  <h1>Activez votre compte</h1>
 
-<p>Bonjour {{user.firstName}}, valider votre compte en cliquant sur le lien suivant</p>
-<p><a href="">Lien</a></p>
-<p>Ce lien experira dans 3 heures</p>
-
-{% endblock  %}
+  <p>Bonjour {{ user.firstName }}, valider votre compte en cliquant sur le lien suivant</p>
+  <p>
+    <a href="{{ absolute_url(path('user_verification', { token: token })) }}">{{ absolute_url(path('user_verification', { token: token })) }}</a>
+  </p>
+  <p>Ce lien experira dans 3 heures</p>
+{% endblock %}
