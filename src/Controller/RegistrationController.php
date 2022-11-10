@@ -84,8 +84,8 @@ class RegistrationController extends AbstractController
     {
         // on vérifie si le token est valide, n'a pas expiré et n'a pas été modifié 
 
-        if($jwt->isValid($token) && !$jwt->isExpired($token) && $jwt->check($token, $this->getParameter('app.jwtsecret'))) {
-            
+        if ($jwt->isValid($token) && !$jwt->isExpired($token) && $jwt->check($token, $this->getParameter('app.jwtsecret'))) {
+
             // Récupération du payload
             $payload = $jwt->getPayload($token);
 
@@ -93,16 +93,58 @@ class RegistrationController extends AbstractController
             $user = $userRepository->find($payload['user_id']);
 
             //On vérifie que l'user existe et n'a pas encore activé son compte
-            if ($user && !$user->getIsVerified()) 
-            {
+            if ($user && !$user->getIsVerified()) {
                 $user->setIsVerified(true);
                 $em->flush($user);
                 $this->addFlash('success', 'Votre compte est activé');
-                return $this->redirectToRoute('app_profile_details',  { lastName: app.user.lastName });
+                return $this->redirectToRoute('app_profile_details', ['lastName' => $this->getUser()->getLastName()]); // ça marche qd même malgré le surlignage en rouge
             }
         }
         // Si un pblm se pose dans le token
         $this->addFlash('danger', 'Le lien est invalide ou a expiré');
         return $this->redirectToRoute('app_login');
+    }
+
+    #[Route('/renvoi_verification', name: 'verif_resend')]
+    public function resendVerif(JWTService $jwt, SendMailService $mail, UserRepository $userRepository): Response
+    {
+        $user = $this->getUser();
+
+        if (!$user) {
+            $this->addFlash('danger', 'Vous devez être connecté pour accéder à cette page');
+            return $this->redirectToRoute('app_login');
+        }
+
+        if ($user->getIsVerified()) {
+            $this->addFlash('warning', 'Votre compte est déjà activé');
+            return $this->redirectToRoute('app_profile_details', ['lastName' => $this->getUser()->getLastName()]);
+        }
+
+        // On génère le JWT de l'utilisateur
+        // On crée le Header
+        $header = [
+            'typ' => 'JWT',
+            'alg' => 'HS256'
+        ];
+
+        // On crée le Payload
+        $payload = [
+            'user_id' => $user->getId()
+        ];
+
+        // On génère le token
+        $token = $jwt->generate($header, $payload, $this->getParameter('app.jwtsecret'));
+
+        // On envoie un mail
+        $mail->send(
+            'no-reply@monsite.net',
+            $user->getEmail(),
+            'Activation de votre compte sur le site e-commerce',
+            'register',
+            compact('user', 'token')
+        );
+        
+        $this->addFlash('success', 'Email de vérification envoyé');
+        return $this->redirectToRoute('app_profile_details', ['lastName' => $this->getUser()->getLastName()]);
     }
 }
