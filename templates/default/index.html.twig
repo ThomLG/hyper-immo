@@ -19,7 +19,7 @@
           <div class="card-body">
             <h3 class="card-title">{{ dwelling.name }}</h3>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Voir plus</a>
+            <a href="{{path('dwelling_details', { name: dwelling.name })}}" class="btn btn-primary">Voir plus</a>
             <div class="card-footer">
               <span class="badge bg-warning">{{ dwelling.city }}</span>
               <span class="badge bg-success">{{ dwelling.price }}</span>
