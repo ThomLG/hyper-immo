@@ -12,12 +12,14 @@
       </div>
       <div class="col-6">
         {% if dwelling.category.name == 'Location' %}
-          {{ dwelling.price }} € /mois
+          <p>Prix : {{ dwelling.price }} € /mois</p>
         {% else %}
-          {{ dwelling.price }} €
+          <p>Prix : {{ dwelling.price }} €</p>
         {% endif %}
       </div>
-      <div class="col-6"></div>
+      <div class="col-6">
+        <img src="{{ asset('assets/uploads/images/') ~ dwelling.picture }}" alt="" />
+      </div>
     </section>
   </main>
 {% endblock %}
