@@ -1,6 +1,20 @@
-body{
-    margin: 0;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+body {
+  background: whitesmoke;
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.navbar {
+  background: grey !important;
+}
+
+.navbar a {
+  color: white !important;
+}
+
+.footer {
+  background: grey !important;
+  color: white;
 }
