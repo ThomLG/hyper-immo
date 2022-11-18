@@ -15,11 +15,29 @@
           <p>Prix : {{ dwelling.price }} € /mois</p>
         {% else %}
           <p>Prix : {{ dwelling.price }} €</p>
+          <p>Taille : {{ dwelling.size }} m² €</p>
+          <p>{{ dwelling.description }}</p>
         {% endif %}
       </div>
       <div class="col-6">
         <img src="{{ asset('assets/uploads/images/') ~ dwelling.picture }}" alt="" />
       </div>
+    </section>
+    <section class="col-12">
+      <h2>Commentaires</h2>
+      <div>
+        <h3>Commentaires de l'annonce</h3>
+        <div>
+          {% for comment in dwelling.comments %}
+            <div style="background : red; margin : 2px;">
+            {{ comment.content }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div><h3>Ajouter un commentaire</h3>
+        {{ form(commentForm) }}</div>
     </section>
   </main>
 {% endblock %}

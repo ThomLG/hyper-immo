@@ -14,7 +14,12 @@ body {
   color: white !important;
 }
 
+.card {
+  margin: 10px;
+}
+
 .footer {
   background: grey !important;
   color: white;
+  text-align: center;
 }
