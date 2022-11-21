@@ -19,20 +19,20 @@
           <p>{{ dwelling.description }}</p>
         {% endif %}
       </div>
+
       <div class="col-6">
         <img src="{{ asset('assets/uploads/images/') ~ dwelling.picture }}" alt="" />
       </div>
     </section>
+
     <section class="col-12">
       <h2>Commentaires</h2>
       <div>
         <div>
           {% for comment in dwelling.comments %}
             <div style="background : grey; margin : 2px;">
-              <p>Publié le {{ comment.createdAt|date('d/m/Y H:i') }}</p>
+              <p>Publié le {{ comment.createdAt|date('d/m/Y H:i', 'Europe/Paris') }}</p>
               <p>{{ comment.content }}</p>
-              <p><a href="#ajout-comment" class="btn btn-primary" data-reply data-id="{{ comment.id }}">Répondre</a>
-              </p>
             </div>
           {% endfor %}
         </div>
@@ -44,18 +44,4 @@
       </div>
     </section>
   </main>
-{% endblock %}
-
-
-{% block javascripts %}
-
-<script>
-
-// Mise en place écouteur d'évènement sur les btn répondre.
-document.querySelectorAll('[data-reply]').forEach(element => {
-    element.addEventListener("click", function(){
-        document.querySelector("#comment_parentId").value = this.dataset.id; /*parentId vient de comment form Type */
-    });
-});
-</script>
 {% endblock %}

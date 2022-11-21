@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,6 +16,11 @@ class CommentFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('author', TextType::class, [
+                'attr' => [
+                    "class" => "form-control"
+                ]
+            ])
             ->add(
                 'email',
                 EmailType::class,
@@ -26,19 +30,15 @@ class CommentFormType extends AbstractType
                     ]
                 ]
             )
-            ->add('pseudo', TextType::class, [
-                'attr' => [
-                    "class" => "form-control"
+            ->add(
+                'content',
+                TextareaType::class,
+                [
+                    'attr' => [
+                        "class" => "form-control"
+                    ]
                 ]
-            ])
-            ->add('content', TextareaType::class, [
-                'attr' => [
-                    "class" => "form-control"
-                ]
-            ])
-            ->add('parentId', HiddenType::class, [
-                'mapped' => false // n'existe pas dans les champs normaux de mon entity comment
-            ])
+            )
             ->add('Envoyer', SubmitType::class);
     }
 

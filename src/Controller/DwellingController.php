@@ -3,47 +3,32 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
-use App\Entity\Dwelling;
 use App\Form\CommentFormType;
+use App\Repository\CommentRepository;
+use App\Repository\DwellingRepository;
 use DateTimeImmutable;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/dwelling', name: 'dwelling_')]
 class DwellingController extends AbstractController
 {
-    #[Route('/{name}', name: 'dwelling_details')]
-    public function details(Dwelling $dwelling, Request $request, EntityManagerInterface $entityManager, ManagerRegistry $doctrine): Response
+    #[Route('/{name}', name: 'details')]
+    public function details($name, DwellingRepository $dwellingRepository, CommentRepository $commentRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $dwelling = $dwellingRepository->findOneBy(['name' => $name]);
 
-        // Partie formulaire de commentaires
-
-        $comment = new Comment;
-
-        // On génère le formulaire
-
-        $commentForm = $this->createForm(CommentFormType::class, $comment);
-
-        $commentForm->handleRequest($request);
-
-        // Traitement du formulaire
-        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+        $comment = new Comment();
+        $form = $this->createForm(CommentFormType::class, $comment);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
             $comment->setCreatedAt(new DateTimeImmutable());
             $comment->setDwelling($dwelling);
 
-            // Récupération du contenu du champ parentId
-            $parentId = $commentForm->get("parentId")->getData();
-
-            // On va chercher le commentaire correspondant
-            $entityManager = $doctrine->getManager();
-
-            $parent = $entityManager->getRepository(Comment::class)->find($parentId);
-
-            // On définit le parent 
-            $comment->setParent($parent);
             $entityManager->persist($comment);
             $entityManager->flush();
 
@@ -51,9 +36,10 @@ class DwellingController extends AbstractController
             return $this->redirectToRoute('dwelling_details', ['name' => $dwelling->getName()]);
         }
 
+
         return $this->render('dwelling/index.html.twig', [
             'dwelling' => $dwelling,
-            'commentForm' => $commentForm->createView()
+            'commentForm' => $form->createView()
         ]);
     }
 }
