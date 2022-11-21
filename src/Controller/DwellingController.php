@@ -34,12 +34,21 @@ class DwellingController extends AbstractController
             $comment->setCreatedAt(new DateTimeImmutable());
             $comment->setDwelling($dwelling);
 
+            // Récupération du contenu du champ parentId
+            $parentId = $commentForm->get("parentId")->getData();
+
+            // On va chercher le commentaire correspondant
             $entityManager = $doctrine->getManager();
+
+            $parent = $entityManager->getRepository(Comment::class)->find($parentId);
+
+            // On définit le parent 
+            $comment->setParent($parent);
             $entityManager->persist($comment);
             $entityManager->flush();
 
             $this->addFlash('success', 'Message envoyé !');
-            return $this->redirectToRoute('dwelling_details', ['name'=>$dwelling->getName()]);
+            return $this->redirectToRoute('dwelling_details', ['name' => $dwelling->getName()]);
         }
 
         return $this->render('dwelling/index.html.twig', [
