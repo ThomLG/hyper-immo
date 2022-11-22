@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Administration des logements
+{% endblock %}
+
+{% block body %}
+  <main class="container">
+    <h1>Administration des logements</h1>
+
+    <a href="{{ path('dwelling_admin_add') }}" class="btn btn-primary">Nouveau logement</a>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Taille</th>
+          <th>Adresse</th>
+          <th>Code postal</th>
+          <th>Ville</th>
+          <th>Prix</th>
+          <th>Type</th>
+          <th>Catégorie</th>
+          <th>Description</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dwelling in dwellings %}
+          <tr>
+            <td>{{ dwelling.name }}</td>
+            <td>{{ dwelling.size }}m²</td>
+            <td>{{ dwelling.adress }}</td>
+            <td>{{ dwelling.zipcode }}</td>
+            <td>{{ dwelling.city }}</td>
+            <td>{{ dwelling.price }}</td>
+            <td>{{ dwelling.type }}</td>
+            <td>{{ dwelling.category }}</td>
+            <td>{{ dwelling.description|raw }}</td>
+            <td>{{ dwelling.picture }}</td>
+            <td>
+              <a href="{{ path('dwelling_admin_edit', { id: dwelling.id }) }}" class="btn btn-warning">Modifier</a>
+            </td>
+            <td>
+              <a href="{{ path('dwelling_admin_delete', { id: dwelling.id }) }}" class="btn btn-danger">Supprimer</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+{% endblock %}

@@ -16,7 +16,7 @@
         {% else %}
           <p>Prix : {{ dwelling.price }} €</p>
           <p>Taille : {{ dwelling.size }} m² €</p>
-          <p>{{ dwelling.description }}</p>
+          <p>{{ dwelling.description|raw }}</p>
         {% endif %}
       </div>
 
