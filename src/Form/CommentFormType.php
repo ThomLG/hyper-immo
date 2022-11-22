@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class CommentFormType extends AbstractType
 {
@@ -32,14 +33,25 @@ class CommentFormType extends AbstractType
             )
             ->add(
                 'content',
-                TextareaType::class,
+                CKEditorType::class,
                 [
+                    'config'=>[
+                    'uiColor'=>'#ffffff'
+                    ],
                     'attr' => [
                         "class" => "form-control"
                     ]
                 ]
             )
-            ->add('Envoyer', SubmitType::class);
+            ->add(
+                'Envoyer',
+                SubmitType::class,
+                [
+                    'attr' => [
+                        'class' => 'btn btn-primary'
+                    ]
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

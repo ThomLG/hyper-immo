@@ -32,7 +32,7 @@
           {% for comment in dwelling.comments %}
             <div style="background : grey; margin : 2px;">
               <p>Publié le {{ comment.createdAt|date('d/m/Y H:i', 'Europe/Paris') }}</p>
-              <p>{{ comment.content }}</p>
+              <p>{{ comment.content|raw }}</p>
             </div>
           {% endfor %}
         </div>
