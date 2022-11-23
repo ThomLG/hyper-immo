@@ -41,11 +41,42 @@
               <a href="{{ path('dwelling_admin_edit', { id: dwelling.id }) }}" class="btn btn-warning">Modifier</a>
             </td>
             <td>
-              <a href="{{ path('dwelling_admin_delete', { id: dwelling.id }) }}" class="btn btn-danger">Supprimer</a>
+              {# <a href="{{ path('dwelling_admin_delete', { id: dwelling.id }) }}" class="btn btn-danger" onclick="">Supprimer</a> #}
+              <a href class="btn btn-success btn-delete" data-id="{{ dwelling.id }}"  data-name="{{ dwelling.name }}" data-city={{dwelling.city}}" data-bs-toggle="modal" data-bs-target="#modalDelete">Supprimer</a>
             </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
+    {# Code de la modale (confirmation suprression du code) #}
+    <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <a href="" class="btn btn-danger">Supprimer</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+{% endblock %}
+
+{% block javascripts %}
+  <script>
+    window.onload = () => {
+      let supprimer = document.querySelectorAll('.btn-delete')
+      for (let bouton of supprimer) {
+        bouton.addEventListener('click', function () {
+          document.querySelector('.modal-footer a').href = `/admin/dwellings/suppression/${this.dataset.id}`
+          document.querySelector('.modal-body').innerText = `Êtes-vous sûr(e) de vouloir supprimer l'annonce : "${this.dataset.name} - ${this.dataset.city}"`
+        })
+      }
+    }
+  </script>
 {% endblock %}
