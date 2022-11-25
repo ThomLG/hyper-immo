@@ -8,9 +8,12 @@ use App\Form\AdminAddDwellingFormType;
 use App\Repository\DwellingRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/admin/dwellings', name: 'dwelling_admin_')]
 class AdminDwellingController extends AbstractController
@@ -25,7 +28,7 @@ class AdminDwellingController extends AbstractController
     }
 
     #[Route('/ajout', name: 'add')]
-    public function addDwelling(Request $request, ManagerRegistry $doctrine): Response
+    public function addDwelling(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
     {
         $dwelling = new Dwelling;
 
@@ -33,6 +36,30 @@ class AdminDwellingController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération image uploadée
+            /** @var UploadedFile $picture */
+            $picture = $form->get('picture')->getData();
+
+            // Renomme le nom du fichier
+            if ($picture) {
+                $fileName = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFileName = $slugger->slug($fileName);
+                $newPictureName = $safeFileName . '.' . $picture->guessExtension();
+
+                // On déplace l'image vers son dossier 
+
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory'),
+                        $newPictureName
+                    );
+                } catch (FileException $e) {
+                    //
+                }
+
+                $dwelling->setPicture($newPictureName);
+            }
+
             $em = $doctrine->getManager();
             $em->persist($dwelling);
             $em->flush();
@@ -45,12 +72,36 @@ class AdminDwellingController extends AbstractController
     }
 
     #[Route('/modifier/{id}', name: 'edit')]
-    public function editDwelling(Dwelling $dwelling, Request $request, ManagerRegistry $doctrine): Response
+    public function editDwelling(Dwelling $dwelling, Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(AdminAddDwellingFormType::class, $dwelling);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Récupération nouvelle image uploadée
+            /** @var UploadedFile $picture */
+            $picture = $form->get('picture')->getData();
+
+            // Renomme le nom de la nouvelle image
+            if ($picture) {
+                $fileName = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFileName = $slugger->slug($fileName);
+                $newPictureName = $safeFileName . '.' . $picture->guessExtension();
+
+                // On déplace l'image vers son dossier 
+
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory'),
+                        $newPictureName
+                    );
+                } catch (FileException $e) {
+                    //
+                }
+
+                $dwelling->setPicture($newPictureName);
+            }
+
             $em = $doctrine->getManager();
             $em->persist($dwelling);
             $em->flush();

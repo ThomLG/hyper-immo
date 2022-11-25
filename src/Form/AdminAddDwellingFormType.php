@@ -60,7 +60,9 @@ class AdminAddDwellingFormType extends AbstractType
             ])
             ->add('type')
             ->add('category')
-            // ->add('picture', FileType::class)
+            ->add('picture', FileType::class,[
+                'data_class'=>null
+            ])
             ->add(
                 'Envoyer',
                 SubmitType::class,

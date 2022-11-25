@@ -1,5 +1,11 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url('/assets/fonts/Open_Sans/OpenSans-Regular.ttf');
+}
+
 body {
   background: whitesmoke;
+  font-family: 'Open Sans' !important;
   margin: 0;
   min-height: 100vh;
   display: grid;
@@ -7,19 +13,42 @@ body {
 }
 
 .navbar {
-  background: grey !important;
+  background: #000814 !important;
 }
 
 .navbar a {
   color: white !important;
 }
 
+.navbar a:hover {
+  color: #ffd60a !important;
+}
+
 .card {
   margin: 10px;
 }
 
+.card .btn {
+  background: #003566;
+  border: 1px #ffc300 solid;
+}
+
+
+
+.card .btn:hover{
+    background: #02519b;
+    color: #ffd60a;
+}
+
+.card .btn:active{
+    background: #02519b;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+
 .footer {
-  background: grey !important;
+  background: #000814 !important;
   color: white;
   text-align: center;
 }
