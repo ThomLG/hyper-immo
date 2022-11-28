@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier un logement{% endblock %}
+{% block title %}
+  Modifier un logement
+{% endblock %}
 
 {% block body %}
-<main class="container">
+  <main class="container">
     <h1>Modifier un logement</h1>
 
-     {{form(form)}}
-</main>
+    {{ form(form) }}
+    {% if form.picture.vars.data %}
+      <img src="{{ asset('/uploads/images/' ~ form.picture.vars.data) }}" />
+      <p>{{ form.picture.vars.data }}</p>
+    {% endif %}
+  </main>
 {% endblock %}

@@ -14,11 +14,32 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('lastName', TextType::class)
-            ->add('firstName', TextType::class)
-            ->add('avatar', TextType::class)
-            ->add('Valider', SubmitType::class)
-        ;
+            ->add('lastName', TextType::class, [ 'label' => 'NOM',
+                    'attr' => [
+                        "class" => "form-control"
+                    ]
+
+            ])
+            ->add('firstName', TextType::class, [ 'label' => 'Prénom',
+                    'attr' => [
+                        "class" => "form-control"
+                    ]
+
+            ])
+            ->add(
+                'avatar',
+                TextType::class,
+                [ 'label' => 'Pseudo',
+                    'attr' => [
+                        "class" => "form-control"
+                    ]
+                ]
+            )
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn formBtn mt-3'
+                ]
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

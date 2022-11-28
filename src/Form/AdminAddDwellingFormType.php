@@ -68,7 +68,7 @@ class AdminAddDwellingFormType extends AbstractType
                 SubmitType::class,
                 [
                     'attr' => [
-                        'class' => 'btn btn-primary'
+                        'class' => 'btn formBtn'
                     ]
                 ]
             )

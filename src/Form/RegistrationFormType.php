@@ -19,34 +19,41 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', 
-            EmailType::class, 
-            [
-                'attr' => [
-                    "class" => "form-control"
+            ->add(
+                'email',
+                EmailType::class,
+                [
+                    'label' => 'Entrez votre e-mail',
+                    'attr' => [
+                        "class" => "form-control"
+                    ]
                 ]
-            ])
+            )
             ->add('lastName', TextType::class, [
+                'label' => 'NOM',
                 'attr' =>
                 [
                     "class" => "form-control"
                 ]
             ])
             ->add('firstName', TextType::class, [
+                'label' => 'Prénom',
                 'attr' => [
                     "class" => "form-control"
                 ]
             ])
             ->add('avatar', TextType::class, [
+                'label' => 'Pseudo',
                 'attr' => [
                     "class" => "form-control"
                 ]
             ])
             ->add('RGPDConsent', CheckboxType::class, [
+                'label' => ' J\'autorise ce site à conserver mes données transmises via ce formulaire',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => ' J\'autorise ce site à conserver mes données transmises via ce formulaire',
                     ]),
                 ],
             ])
@@ -56,11 +63,11 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'autocomplete' => 'new-password',
-                    'class'=>'form-control'
-            ],
+                    'class' => 'form-control'
+                ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Veuillez entrer un mot de passe',
                     ]),
                     new Length([
                         'min' => 6,

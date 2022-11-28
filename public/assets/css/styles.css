@@ -1,17 +1,26 @@
 @font-face {
-    font-family: 'Open Sans';
-    src: url('/assets/fonts/Open_Sans/OpenSans-Regular.ttf');
+  font-family: "Open Sans";
+  src: url("/assets/fonts/Open_Sans/OpenSans-Regular.ttf");
 }
 
 body {
   background: whitesmoke;
-  font-family: 'Open Sans' !important;
+  font-family: "Open Sans" !important;
   margin: 0;
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
 
+.footer {
+  background: #000814 !important;
+  color: white;
+  text-align: center;
+}
+
+/*******************************************************************************************/
+
+/**************************************** Menu navigation **********************************/
 .navbar {
   background: #000814 !important;
 }
@@ -24,6 +33,9 @@ body {
   color: #ffd60a !important;
 }
 
+/*****************************************************************************************/
+
+/******************************** Cartes bootstrap ***************************************/
 .card {
   margin: 10px;
 }
@@ -33,22 +45,64 @@ body {
   border: 1px #ffc300 solid;
 }
 
-
-
-.card .btn:hover{
-    background: #02519b;
-    color: #ffd60a;
+.card .btn:hover {
+  background: #02519b;
+  color: #ffd60a;
 }
 
-.card .btn:active{
-    background: #02519b;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+.card .btn:active {
+  background: #02519b;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
+/*********** Commentaires *****************************************************************/
 
-.footer {
-  background: #000814 !important;
-  color: white;
-  text-align: center;
+.commentsBlock {
+  border: 1px solid rgb(82, 82, 82);
+  border-radius: 0.625rem;
+  padding: 5px;
+  margin: 5px;
+}
+
+.commentDate {
+  font-style: italic;
+}
+
+.commentContent {
+  padding: 5px;
+}
+
+/**************************************************************************************************/
+
+/************************************* Formulaire ***********************************************/
+
+.formBtn {
+  background: #003566;
+  border: 1px #ffc300 solid;
+  color: whitesmoke;
+  margin: 10px;
+}
+.formSecondaryBtn {
+  background: #2f6597;
+  border: 1px #ffc300 solid;
+  color: whitesmoke;
+  margin: 10px;
+}
+
+.formBtn a {
+  color: whitesmoke !important;
+  font-size: 14pt !important;
+  padding: 5px !important;
+}
+
+.formBtn:hover {
+  background: #02519b;
+  color: #ffd60a;
+}
+
+.formBtn:active {
+  background: #02519b;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

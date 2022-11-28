@@ -18,6 +18,7 @@ class CommentFormType extends AbstractType
     {
         $builder
             ->add('author', TextType::class, [
+                'label' => 'Auteur',
                 'attr' => [
                     "class" => "form-control"
                 ]
@@ -26,6 +27,7 @@ class CommentFormType extends AbstractType
                 'email',
                 EmailType::class,
                 [
+                    'label' => 'Entrez votre e-mail',
                     'attr' => [
                         "class" => "form-control"
                     ]
@@ -35,8 +37,9 @@ class CommentFormType extends AbstractType
                 'content',
                 CKEditorType::class,
                 [
-                    'config'=>[
-                    'uiColor'=>'#ffffff'
+                    'label' => 'Votre message',
+                    'config' => [
+                        'uiColor' => '#ffffff'
                     ],
                     'attr' => [
                         "class" => "form-control"
@@ -48,7 +51,7 @@ class CommentFormType extends AbstractType
                 SubmitType::class,
                 [
                     'attr' => [
-                        'class' => 'btn btn-primary'
+                        'class' => 'btn formBtn mt-3'
                     ]
                 ]
             );

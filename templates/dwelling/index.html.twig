@@ -29,10 +29,15 @@
       <h2>Commentaires</h2>
       <div>
         <div>
+          {% if dwelling.comments is empty %}
+            <div class="commentsBlock">
+              <p>Aucun commentaire</p>
+            </div>
+          {% endif %}
           {% for comment in dwelling.comments %}
-            <div style="background : grey; margin : 2px;">
-              <p>Publié le {{ comment.createdAt|date('d/m/Y H:i', 'Europe/Paris') }}</p>
-              <p>{{ comment.content|raw }}</p>
+            <div class="commentsBlock">
+              <p class="commentDate">Publié le {{ comment.createdAt|date('d/m/Y H:i', 'Europe/Paris') }} par {{comment.author}}</p>
+              <p class="commentContent">{{ comment.content|raw }}</p>
             </div>
           {% endfor %}
         </div>
