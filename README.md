@@ -34,7 +34,6 @@ Write in env.local (create this file if not existing)
 
 Use `symfony console` instead of `php bin/console` if using the Symfony CLI.
 
-### Symfony Installation
 
 ## Run Symfony Server :
 
