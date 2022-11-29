@@ -8,16 +8,21 @@
   <main class="container">
     <h1>Administration des logements</h1>
 
-    <a href="{{ path('dwelling_admin_add') }}" class="btn btn-primary m-5">Nouveau logement</a>
+    <li>
+      <a href="{{ path('dwelling_admin_add') }}" class="btn formBtn m-5">Nouveau logement</a>
+    </li>
+    <li>
+      <a href="{{ path('adminpage_index') }}" class="btn formBtn m-5">Retour menu d'administration</a>
+    </li>
     <table class="table table-bordered">
       <thead>
         <tr>
           <th>Nom</th>
-          <th>Taille</th>
+          <th>Taille (m²)</th>
           <th>Adresse</th>
           <th>Code postal</th>
           <th>Ville</th>
-          <th>Prix</th>
+          <th>Prix (€)</th>
           <th>Type</th>
           <th>Catégorie</th>
           <th>Description</th>
@@ -42,7 +47,7 @@
             </td>
             <td>
               {# <a href="{{ path('dwelling_admin_delete', { id: dwelling.id }) }}" class="btn btn-danger" onclick="">Supprimer</a> #}
-              <a href class="btn btn-success btn-delete" data-id="{{ dwelling.id }}"  data-name="{{ dwelling.name }}" data-city={{dwelling.city}}" data-bs-toggle="modal" data-bs-target="#modalDelete">Supprimer</a>
+              <a href class="btn btn-danger btn-delete" data-id="{{ dwelling.id }}" data-name="{{ dwelling.name }}" data-city="{{ dwelling.city }}" data-bs-toggle="modal" data-bs-target="#modalDelete">Supprimer</a>
             </td>
           </tr>
         {% endfor %}

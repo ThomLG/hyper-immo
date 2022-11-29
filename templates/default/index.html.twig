@@ -14,19 +14,7 @@
       </ul>
 
       {% for dwelling in dwellings %}
-        <div class="card" style="width: 18rem;">
-          <img src="{{ asset('uploads/images/') ~ dwelling.picture }}" class="card-img-top mt-3" alt="..." />
-          <div class="card-body text-center">
-            <h3 class="card-title">{{ dwelling.name }}</h3>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="{{ path('dwelling_details', { name: dwelling.name }) }}" class="btn btn-primary m-2">Voir plus</a>
-            <div class="card-footer">
-              <span class="badge bg-warning">{{ dwelling.city|upper }} ({{dwelling.zipcode}})</span>
-              <span class="badge bg-success">{{ dwelling.price|format_currency('EUR', locale = 'fr_FR') }}</span>
-              <span class="badge bg-danger">{{ dwelling.size }} m²</span>
-            </div>
-          </div>
-        </div>
+        {% include '_partials/_cards_dwelling.html.twig' %}
       {% endfor %}
     </section>
   </main>

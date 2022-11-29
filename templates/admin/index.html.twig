@@ -7,9 +7,13 @@
 {% block body %}
   <main class="container">
     <h1>Administration</h1>
-
-    <li>
-      <a href="{{ path('dwelling_admin_index') }}">Logements</a>
-    </li>
+    <div class="adminNavBar">
+      <li>
+        <a class="btn formBtn" href="{{ path('dwelling_admin_index') }}">Logements</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn formBtn" href="{{ path('homepage') }}">Retour page d'accueil</a>
+      </li>
+    </div>
   </main>
 {% endblock %}
