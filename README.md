@@ -2,7 +2,14 @@
 
 ==================
 
+### Get project on GitHub
+
+`git clone : https://github.com/ThomLG/hyper-immo`
+
+
 ## Installation
+
+
 
 ### Symfony Installation
 
@@ -12,9 +19,6 @@
 
 `composer install`
 
-### Get project on GitHub
-
-`git clone : https://github.com/ThomLG/hyper-immo`
 
 ### Database update
 
