@@ -21,7 +21,7 @@
 ```shell
 php bin/console doctrine:database:drop --force
 php bin/console doctrine:database:create
-php bin/console doctrine:migration:migrate # or if not migration file : php bin/console doctrine:schema:update --force)--->
+php bin/console doctrine:migration:migrate # or if not migration file : php bin/console doctrine:schema:update --force)
 php bin/console doctrine:fixtures:load
 ```
 
