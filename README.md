@@ -12,4 +12,4 @@ $ git clone : https://github.com/ThomLG/hyper-immo
 
 ## Run Symfony Server :
 
-$ symfony serve
+```$ symfony serve```
