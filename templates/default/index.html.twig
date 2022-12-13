@@ -9,7 +9,7 @@
 
       <ul>
         {% for category in categories %}
-          <a href="{{ path('app_category_name', { name: category.name }) }}">{{ category.name }}</a>
+          <a class="btn formBtn" href="{{ path('app_category_name', { name: category.name }) }}">{{ category.name }}</a>
         {% endfor %}
       </ul>
 

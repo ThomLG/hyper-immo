@@ -13,7 +13,7 @@ body {
 }
 
 .footer {
-  background: #000814 !important;
+  background: #003566 !important;
   color: white;
   text-align: center;
 }
@@ -22,7 +22,7 @@ body {
 
 /**************************************** Menu navigation **********************************/
 .navbar {
-  background: #000814 !important;
+  background: #003566 !important;
 }
 
 .navbar a {
@@ -31,6 +31,31 @@ body {
 
 .navbar a:hover {
   color: #ffd60a !important;
+}
+
+.navbarLogo {
+  margin: 5px;
+  height: 36px;
+}
+
+.navbarTitle {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.fa-user {
+  color: white;
+  margin: 5px;
+}
+
+.fa-hammer {
+    color: white;
+    margin: 5px;
+}
+
+.fa-power-off {
+  color: white;
+  margin: 5px;
 }
 
 /*****************************************************************************************/
