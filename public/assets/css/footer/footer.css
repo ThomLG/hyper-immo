@@ -1,0 +1,26 @@
+/********************************************** Footer *****************************************/
+.footer {
+    background: #003566 !important;
+    color: white;
+    text-align: center;
+  }
+  
+  .footerSection-3{
+    font-size: 1.2rem;  
+    text-align: center;
+  }
+  
+  .footerSection-3 ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+  }
+  
+  .footerIcon {
+    margin: 10px;
+  }
+  
+  .footerIcon:hover {
+    color: #ffc300;
+  }

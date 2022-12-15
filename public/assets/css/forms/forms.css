@@ -1,0 +1,32 @@
+/************************************* Formulaire ***********************************************/
+
+.formBtn {
+    background: #003566;
+    border: 1px #ffc300 solid;
+    color: whitesmoke;
+    margin: 10px;
+  }
+  .formSecondaryBtn {
+    background: #2f6597;
+    border: 1px #ffc300 solid;
+    color: whitesmoke;
+    margin: 10px;
+  }
+  
+  .formBtn a {
+    color: whitesmoke !important;
+    font-size: 14pt !important;
+    padding: 5px !important;
+  }
+  
+  .formBtn:hover {
+    background: #02519b;
+    color: #ffd60a;
+  }
+  
+  .formBtn:active {
+    background: #02519b;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  

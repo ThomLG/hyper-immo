@@ -1,19 +1,12 @@
+@import url("./navbar/navbar.css");
+@import url("./footer/footer.css");
+@import url("./forms/forms.css");
+
 @font-face {
   font-family: "Open Sans";
   src: url("/assets/fonts/Open_Sans/OpenSans-Regular.ttf");
 }
 
-@media all and (min-width: 992px) {
-  .navbar .nav-item .dropdown-menu {
-    display: none;
-  }
-  .navbar .nav-item:hover .dropdown-menu {
-    display: block;
-  }
-  .navbar .nav-item .dropdown-menu {
-    margin-top: 0;
-  }
-}
 
 body {
   background: whitesmoke;
@@ -30,81 +23,7 @@ body {
   font-weight: bold;
 }
 
-/********************************************** Footer *****************************************/
-.footer {
-  background: #003566 !important;
-  color: white;
-  text-align: center;
-}
 
-.footerSection-3 h3 {
-  text-align: center;
-}
-
-.footerSection-3 ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  list-style: none;
-}
-
-.footerIcon {
-  margin: 10px;
-}
-
-.footerIcon:hover {
-  color: #ffc300;
-}
-
-/*******************************************************************************************/
-
-/**************************************** Menu navigation **********************************/
-.navbar {
-  background: #003566 !important;
-}
-
-.navbarDropdown {
-  background: #003566 !important;
-}
-
-.navbarDropdown a:hover {
-  background: #02519b;
-}
-
-.navbar a {
-  color: white !important;
-}
-
-.navbar a:hover {
-  color: #ffd60a !important;
-}
-
-.navbarLogo {
-  margin: 5px;
-  height: 36px;
-}
-
-.navbarTitle {
-  text-transform: uppercase;
-  font-size: 1.5rem;
-}
-
-.fa-user {
-  color: white;
-  margin: 5px;
-}
-
-.fa-hammer {
-  color: white;
-  margin: 5px;
-}
-
-.fa-power-off {
-  color: white;
-  margin: 5px;
-}
-
-/*****************************************************************************************/
 
 /******************************** Cartes bootstrap ***************************************/
 .card {
@@ -151,34 +70,3 @@ body {
 
 /**************************************************************************************************/
 
-/************************************* Formulaire ***********************************************/
-
-.formBtn {
-  background: #003566;
-  border: 1px #ffc300 solid;
-  color: whitesmoke;
-  margin: 10px;
-}
-.formSecondaryBtn {
-  background: #2f6597;
-  border: 1px #ffc300 solid;
-  color: whitesmoke;
-  margin: 10px;
-}
-
-.formBtn a {
-  color: whitesmoke !important;
-  font-size: 14pt !important;
-  padding: 5px !important;
-}
-
-.formBtn:hover {
-  background: #02519b;
-  color: #ffd60a;
-}
-
-.formBtn:active {
-  background: #02519b;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
