@@ -3,6 +3,18 @@
   src: url("/assets/fonts/Open_Sans/OpenSans-Regular.ttf");
 }
 
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: none;
+  }
+  .navbar .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+  .navbar .nav-item .dropdown-menu {
+    margin-top: 0;
+  }
+}
+
 body {
   background: whitesmoke;
   font-family: "Open Sans" !important;
@@ -12,10 +24,36 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
+.websiteTitle {
+  font-size: 3.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+/********************************************** Footer *****************************************/
 .footer {
   background: #003566 !important;
   color: white;
   text-align: center;
+}
+
+.footerSection-3 h3 {
+  text-align: center;
+}
+
+.footerSection-3 ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+}
+
+.footerIcon {
+  margin: 10px;
+}
+
+.footerIcon:hover {
+  color: #ffc300;
 }
 
 /*******************************************************************************************/
@@ -23,6 +61,14 @@ body {
 /**************************************** Menu navigation **********************************/
 .navbar {
   background: #003566 !important;
+}
+
+.navbarDropdown {
+  background: #003566 !important;
+}
+
+.navbarDropdown a:hover {
+  background: #02519b;
 }
 
 .navbar a {
@@ -40,7 +86,7 @@ body {
 
 .navbarTitle {
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .fa-user {
@@ -49,8 +95,8 @@ body {
 }
 
 .fa-hammer {
-    color: white;
-    margin: 5px;
+  color: white;
+  margin: 5px;
 }
 
 .fa-power-off {
@@ -63,6 +109,11 @@ body {
 /******************************** Cartes bootstrap ***************************************/
 .card {
   margin: 10px;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .card .btn {

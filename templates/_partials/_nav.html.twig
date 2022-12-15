@@ -1,62 +1,66 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <img class="navbarLogo" src="{{ asset('uploads/icons/navbar-logo/hyper-immo.png') }}" alt="hyper-immo_logo" />
-    <a class="navbar-brand navbarTitle" href="{{ path('homepage') }}">Hyper-Immo</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ path('homepage') }}">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Villes</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <a class="dropdown-item" href="#">Action</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Another action</a>
-            </li>
-            <li>
-              <hr class="dropdown-divider" />
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
+	<div class="container-fluid">
+		<img class="navbarLogo" src="{{ asset('uploads/icons/navbar-logo/hyper-immo.png') }}" alt="hyper-immo_logo"/>
+		<a class="navbar-brand navbarTitle" href="{{ path('homepage') }}">Hyper-Immo</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{ path('homepage') }}">Accueil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Link</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Villes</a>
+					<ul class="dropdown-menu navbarDropdown" aria-labelledby="navbarDropdown">
+						<li>
+							<a class="dropdown-item" href="#">Action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Another action</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+				</li>
+			</ul>
 
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        {# Si l'user est connecté #}
-        {% if app.user %}
-          {% if is_granted('ROLE_ADMIN') %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ path('adminpage_index') }}"><i class="fa-solid fa-hammer"></i>Administration</a>
-            </li>
-          {% endif %}
+			<ul
+				class="navbar-nav ms-auto mb-2 mb-lg-0">
+				{# Si l'user est connecté #}
+				{% if app.user %}
+					{% if
+        is_granted('ROLE_ADMIN') %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('adminpage_index') }}">
+								<i class="fa-solid fa-hammer"></i>Administration</a>
+						</li>
+					{% endif %}
 
-          <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_profile_details', { lastName: app.user.lastName }) }}"><i class="fa-solid fa-user"></i>Mon Compte</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_logout') }}"><i class="fa-sharp fa-solid fa-power-off"></i>Se déconnecter</a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
-          </li>
-        {% endif %}
-      </ul>
-    </div>
-  </div>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_profile_details', { lastName: app.user.lastName }) }}">
+							<i class="fa-solid fa-user"></i>Mon Compte</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_logout') }}">
+							<i class="fa-sharp fa-solid fa-power-off"></i>Se déconnecter</a>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
 </nav>
