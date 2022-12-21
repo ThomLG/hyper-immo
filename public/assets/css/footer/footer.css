@@ -3,6 +3,7 @@
     background: #003566 !important;
     color: white;
     text-align: center;
+    width: 100%;
   }
   
   .footerSection-3{
@@ -24,3 +25,7 @@
   .footerIcon:hover {
     color: #ffc300;
   }
+
+
+/*******************************************************************************/
+

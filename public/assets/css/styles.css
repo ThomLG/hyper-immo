@@ -1,72 +1,59 @@
 @import url("./navbar/navbar.css");
 @import url("./footer/footer.css");
 @import url("./forms/forms.css");
+@import url("./cards/cards.css");
+
 
 @font-face {
-  font-family: "Open Sans";
-  src: url("/assets/fonts/Open_Sans/OpenSans-Regular.ttf");
+    font-family: "Open Sans";
+    src: url("/assets/fonts/Open_Sans/OpenSans-Regular.ttf");
 }
 
 
 body {
-  background: whitesmoke;
-  font-family: "Open Sans" !important;
-  margin: 0;
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+    background: whitesmoke;
+    font-family: "Open Sans" !important;
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 .websiteTitle {
-  font-size: 3.5rem;
-  text-align: center;
-  font-weight: bold;
+    font-size: 3.5rem;
+    text-align: center;
+    font-weight: bold;
 }
 
 
 
-/******************************** Cartes bootstrap ***************************************/
-.card {
-  margin: 10px;
-}
-
-.card-title {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.card .btn {
-  background: #003566;
-  border: 1px #ffc300 solid;
-}
-
-.card .btn:hover {
-  background: #02519b;
-  color: #ffd60a;
-}
-
-.card .btn:active {
-  background: #02519b;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
 
 /*********** Commentaires *****************************************************************/
 
 .commentsBlock {
-  border: 1px solid rgb(82, 82, 82);
-  border-radius: 0.625rem;
-  padding: 5px;
-  margin: 5px;
+    border: 1px solid rgb(82, 82, 82);
+    border-radius: 0.625rem;
+    padding: 5px;
+    margin: 5px;
 }
 
 .commentDate {
-  font-style: italic;
+    font-style: italic;
 }
 
 .commentContent {
-  padding: 5px;
+    padding: 5px;
 }
 
 /**************************************************************************************************/
+@media (max-width: 575.98px) {
+    body {
+        background: whitesmoke;
+        font-family: "Open Sans" !important;
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }
 
+}

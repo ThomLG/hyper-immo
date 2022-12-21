@@ -45,7 +45,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $isVerified = false;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 100, nullable:true)]
     private ?string $resetToken;
 
 
@@ -187,9 +187,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getRestToken(): ?string
-    {
-        return $this->resetToken;
+    public function getResetToken(): ?string
+     {
+         return $this->resetToken;
     }
 
     public function setResetToken(string $resetToken): self

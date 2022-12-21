@@ -139,7 +139,7 @@ class RegistrationController extends AbstractController
         $mail->send(
             'no-reply@monsite.net',
             $user->getEmail(),
-            'Activation de votre compte sur le site e-commerce',
+            'Activation de votre compte sur le site Hyper-Immo',
             'register',
             compact('user', 'token')
         );

@@ -1,0 +1,35 @@
+/******************************** Cartes bootstrap ***************************************/
+.card {
+    margin: 10px;
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card .btn {
+    background: #003566;
+    border: 1px #ffc300 solid;
+}
+
+.card .btn:hover {
+    background: #02519b;
+    color: #ffd60a;
+}
+
+.card .btn:active {
+    background: #02519b;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+/********************************************************************************************/
+
+@media (max-width: 575.98px) { 
+    .card{
+        width: 100%;
+        margin: 10px;
+    }
+
+}

@@ -9,6 +9,17 @@ class JWTService
 
     // On génère le token
 
+    /**
+     * Génération du JWT
+     * @param array $header 
+     * @param array $payload 
+     * @param string $secret 
+     * @param int $validity 
+     * @return string 
+     */
+
+
+
     public function generate(array $header, array $payload, string $secret, int $validity = 10800 /* 3 heures*/): string
     {
         if ($validity > 0) {
